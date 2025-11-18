@@ -381,7 +381,7 @@
             });
             
             // إدارة إضافة البطاقات الجديدة
-            const addCardBtn = document.getElementById('add-card-btn');
+            
             const cardsContainer = document.getElementById('cards-container');
             const maxCardsAlert = document.getElementById('max-cards-alert');
             let cardCount = 2; // البطاقات الأساسية موجودة بالفعل
@@ -403,34 +403,6 @@
                 'fas fa-flask',
                 'fas fa-chart-bar'
             ];
-            
-            // عناوين البطاقات المتاحة
-            const cardTitles = [
-                'فيديوهات تعليمية',
-                'مراجع وملخصات',
-                'محاضرات مباشرة',
-                'مشاريع تطبيقية',
-                'معامل افتراضية',
-                'تحليل البيانات'
-            ];
-            
-            // نصوص البطاقات المتاحة
-            const cardTexts = [
-                'مجموعة واسعة من الفيديوهات التعليمية في مختلف التخصصات',
-                'ملخصات ومراجع شاملة لمساعدتك في الدراسة والامتحانات',
-                'محاضرات مباشرة مع أفضل الأساتذة والمحاضرين',
-                'مشاريع عملية لتطبيق المعرفة والمهارات المكتسبة',
-                'معامل افتراضية لتجربة التجارب العلمية عن بُعد',
-                'أدوات وتحليلات بيانات متقدمة للبحوث العلمية'
-            ];
-            
-            addCardBtn.addEventListener('click', function() {
-                if (cardCount < 4) { // أقصى حد هو 4 بطاقات (2 في كل صف)
-                    cardCount++;
-                    
-                    // إنشاء بطاقة جديدة
-                    const newCard = document.createElement('div');
-                    newCard.className = 'col-md-6 mb-4';
                     
                     // اختيار خصائص عشوائية للبطاقة الجديدة
                     const colorIndex = (cardCount - 1) % cardColors.length;
@@ -447,28 +419,6 @@
                             <p class="card-text">${cardTexts[textIndex]}</p>
                             <a href="#" class="btn btn-light mt-3">استكشف المحتوى</a>
                         </div>
-                    `;
-                    
-                    // إضافة البطاقة الجديدة
-                    cardsContainer.appendChild(newCard);
-                    
-                    // إضافة تأثير hover للبطاقة الجديدة
-                    newCard.querySelector('.card').addEventListener('mouseenter', function() {
-                        this.style.transform = 'translateY(-10px)';
-                    });
-                    
-                    newCard.querySelector('.card').addEventListener('mouseleave', function() {
-                        this.style.transform = 'translateY(0)';
-                    });
-                    
-                    // إظهار رسالة الحد الأقصى إذا وصلنا إليه
-                    if (cardCount === 4) {
-                        maxCardsAlert.style.display = 'block';
-                        addCardBtn.disabled = true;
-                        addCardBtn.innerHTML = '<i class="fas fa-ban me-2"></i> تم الوصول للحد الأقصى';
-                        addCardBtn.classList.remove('btn-outline-primary');
-                        addCardBtn.classList.add('btn-secondary');
-                    }
                 }
             });
         });
